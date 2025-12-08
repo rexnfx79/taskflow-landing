@@ -20,6 +20,7 @@ export default function Home() {
             <a href="#how-it-works" className="hover:text-primary transition-colors">How It Works</a>
             <a href="#pricing" className="hover:text-primary transition-colors">Pricing</a>
             <a href="#faq" className="hover:text-primary transition-colors">FAQ</a>
+            <a href="/blog" className="hover:text-primary transition-colors">Blog</a>
           </nav>
           <div className="flex items-center gap-4">
             <a href="#" className="text-sm font-medium hover:text-primary hidden sm:block">Log in</a>
@@ -459,7 +460,7 @@ export default function Home() {
               <h4 className="font-bold mb-4">Company</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><a href="#" className="hover:text-primary">About</a></li>
-                <li><a href="#" className="hover:text-primary">Blog</a></li>
+                <li><a href="/blog" className="hover:text-primary">Blog</a></li>
                 <li><a href="#" className="hover:text-primary">Careers</a></li>
                 <li><a href="#" className="hover:text-primary">Contact</a></li>
               </ul>
