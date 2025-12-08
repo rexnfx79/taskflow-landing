@@ -23,6 +23,12 @@ In your Netlify dashboard (Site settings → Environment variables), you MUST ha
 5. **`VITE_TINA_BRANCH`** = `main`
    - Only needed if you want to access branch in your React code
 
+### Optional (for custom API URL):
+6. **`TINA_CONTENT_API_URL`** = Custom API endpoint (usually not needed)
+   - Only set this if you're self-hosting or need a custom API endpoint
+   - For Tina Cloud, this is auto-detected and you don't need to set it
+   - Example: `https://your-site.netlify.app/.netlify/functions/tina`
+
 ## Important Notes:
 
 - **Variable names are CASE-SENSITIVE** - must be exactly as shown

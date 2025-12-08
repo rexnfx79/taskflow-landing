@@ -85,8 +85,12 @@ export default defineConfig({
     process.env.VERCEL_GIT_COMMIT_REF ||
     process.env.HEAD ||
     process.env.GITHUB_BRANCH ||
-    "multibody",
+    "main",
   token: process.env.TINA_TOKEN || "",
+  // API URL configuration
+  // For Tina Cloud, this is usually auto-detected, but you can override it
+  // For self-hosted, set this to your API endpoint (e.g., "https://your-site.netlify.app/.netlify/functions/tina")
+  contentApiUrlOverride: process.env.TINA_CONTENT_API_URL || process.env.VITE_TINA_CONTENT_API_URL || undefined,
   media: {
     tina: {
       mediaRoot: "images",
