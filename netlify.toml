@@ -7,11 +7,20 @@
   from = "/admin/*"
   to = "/admin/index.html"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/admin"
   to = "/admin/index.html"
   status = 200
+  force = true
+
+# Headers for admin page to allow scripts
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Content-Security-Policy = "default-src 'self' 'unsafe-inline' 'unsafe-eval' https://identity.netlify.com https://cdn.jsdelivr.net https://unpkg.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://identity.netlify.com https://cdn.jsdelivr.net; connect-src 'self' https://api.github.com https://identity.netlify.com;"
 
 # Client-side routing for all other routes (catch-all - must be last)
 [[redirects]]
