@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --host",
     "dev:tina": "tinacms dev -c \"vite --host\"",
-    "build": "echo '🔍 Debug: Checking environment variables...' && echo 'TINA_CLIENT_ID exists: '$([ -n \"$TINA_CLIENT_ID\" ] && echo 'YES (length: '${#TINA_CLIENT_ID}')' || echo 'NO') && echo 'TINA_TOKEN exists: '$([ -n \"$TINA_TOKEN\" ] && echo 'YES (length: '${#TINA_TOKEN}')' || echo 'NO') && echo 'TINA_BRANCH: '$TINA_BRANCH && echo 'TINA_CLIENT_ID first 20 chars: '${TINA_CLIENT_ID:0:20}'...' && tinacms build 2>&1 || echo '⚠️  Tina CMS build skipped - credentials not configured. Site will deploy without admin interface.'; vite build && (test -d admin && cp -r admin dist/public/ || echo 'No admin folder to copy') && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "build": "echo '🔍 Debug: Checking environment variables...' && echo 'TINA_CLIENT_ID exists: '$([ -n \"$TINA_CLIENT_ID\" ] && echo 'YES' || echo 'NO') && echo 'TINA_TOKEN exists: '$([ -n \"$TINA_TOKEN\" ] && echo 'YES' || echo 'NO') && echo 'TINA_BRANCH: '$TINA_BRANCH && tinacms build 2>&1 || echo '⚠️  Tina CMS build skipped - credentials not configured. Site will deploy without admin interface.'; vite build && (test -d admin && cp -r admin dist/public/ || echo 'No admin folder to copy') && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "build:admin": "tinacms build",
     "start": "NODE_ENV=production node dist/index.js",
     "preview": "vite preview --host",
