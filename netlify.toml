@@ -1,6 +1,7 @@
 [build]
   command = "pnpm build"
   publish = "dist/public"
+  functions = "netlify/functions"
 
 # Headers for JavaScript files to ensure correct Content-Type
 [[headers]]

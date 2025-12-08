@@ -1,22 +1,11 @@
 import type { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
 import fs from "fs/promises";
 import path from "path";
-import { fileURLToPath } from "url";
 import matter from "gray-matter";
-import { remark } from "remark";
-import remarkHtml from "remark-html";
 
 // Get the root directory - Netlify Functions run from repo root
-// Try multiple path resolution methods for compatibility
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-// Netlify Functions run from repo root, so content should be at root level
-// Try both relative to function location and process.cwd()
-let contentPath = path.resolve(__dirname, "..", "..", "content", "blog");
-// Fallback to process.cwd() if the above doesn't work
-if (!contentPath || contentPath.includes("node_modules")) {
-  contentPath = path.resolve(process.cwd(), "content", "blog");
-}
+// In Netlify, process.cwd() is the repository root
+const getContentPath = () => path.join(process.cwd(), "content", "blog");
 
 export const handler: Handler = async (event: HandlerEvent, context: HandlerContext) => {
   const headers = {
@@ -43,11 +32,34 @@ export const handler: Handler = async (event: HandlerEvent, context: HandlerCont
   }
 
   try {
+    const contentPath = getContentPath();
     // Log for debugging
     console.log("Content path:", contentPath);
+    console.log("Process cwd:", process.cwd());
+    
+    // Check if content directory exists
+    try {
+      await fs.access(contentPath);
+    } catch (accessError: any) {
+      console.error("Content directory not accessible:", accessError?.message);
+      // Return empty array instead of error for now
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify([]),
+      };
+    }
     
     const files = await fs.readdir(contentPath);
     console.log("Found files:", files);
+    
+    if (files.length === 0) {
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify([]),
+      };
+    }
     
     const posts = await Promise.all(
       files
@@ -61,8 +73,8 @@ export const handler: Handler = async (event: HandlerEvent, context: HandlerCont
               slug: file.replace(/\.(md|mdx)$/, ""),
               ...data,
             };
-          } catch (err) {
-            console.error(`Error reading file ${file}:`, err);
+          } catch (err: any) {
+            console.error(`Error reading file ${file}:`, err?.message);
             return null;
           }
         })
@@ -70,7 +82,7 @@ export const handler: Handler = async (event: HandlerEvent, context: HandlerCont
     
     // Filter out null values and sort by date, newest first
     const validPosts = posts.filter((post) => post !== null);
-    validPosts.sort((a, b) => {
+    validPosts.sort((a: any, b: any) => {
       const dateA = a.date ? new Date(a.date).getTime() : 0;
       const dateB = b.date ? new Date(b.date).getTime() : 0;
       return dateB - dateA;
@@ -81,13 +93,16 @@ export const handler: Handler = async (event: HandlerEvent, context: HandlerCont
       headers,
       body: JSON.stringify(validPosts),
     };
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error reading blog posts:", error);
+    console.error("Error stack:", error?.stack);
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ error: "Failed to load blog posts" }),
+      body: JSON.stringify({ 
+        error: "Failed to load blog posts",
+        message: error?.message || "Unknown error",
+      }),
     };
   }
 };
-
