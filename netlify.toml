@@ -8,6 +8,12 @@
   [headers.values]
     Content-Type = "application/javascript; charset=utf-8"
 
+# Headers for YAML config file - must be specific to avoid conflicts
+[[headers]]
+  for = "/admin/config.yml"
+  [headers.values]
+    Content-Type = "text/yaml; charset=utf-8"
+
 # Headers for admin page
 [[headers]]
   for = "/admin/*"
@@ -19,15 +25,13 @@
   from = "/admin"
   to = "/admin/index.html"
   status = 200
-  force = true
 
-# Serve Decap CMS admin interface - redirect paths but exclude assets folder
-# Assets folder contains JS files that need to be served directly
+# Serve Decap CMS admin interface - redirect paths but NOT files
+# Static files (like config.yml) will be served directly before this redirect
 [[redirects]]
   from = "/admin/*"
   to = "/admin/index.html"
   status = 200
-  force = true
   # This will redirect, but actual files in /admin/assets/ will be served first
 
 # Client-side routing for all other routes (catch-all - must be last)
