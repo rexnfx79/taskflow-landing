@@ -14,6 +14,17 @@
   [headers.values]
     Content-Type = "text/yaml; charset=utf-8"
 
+# Blog API routes - must come before catch-all
+[[redirects]]
+  from = "/api/blog"
+  to = "/.netlify/functions/blog"
+  status = 200
+
+[[redirects]]
+  from = "/api/blog/:slug"
+  to = "/.netlify/functions/blog-slug?slug=:slug"
+  status = 200
+
 # Headers for admin page
 [[headers]]
   for = "/admin/*"
