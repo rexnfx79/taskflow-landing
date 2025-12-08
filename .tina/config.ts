@@ -85,7 +85,7 @@ export default defineConfig({
     process.env.VERCEL_GIT_COMMIT_REF ||
     process.env.HEAD ||
     process.env.GITHUB_BRANCH ||
-    "main",
+    "multibody",
   token: process.env.TINA_TOKEN || "",
   media: {
     tina: {
