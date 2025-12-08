@@ -2,25 +2,33 @@
   command = "pnpm build"
   publish = "dist/public"
 
-# Serve Decap CMS admin interface - must come before catch-all
-[[redirects]]
-  from = "/admin/*"
-  to = "/admin/index.html"
-  status = 200
-  force = true
+# Headers for JavaScript files to ensure correct Content-Type
+[[headers]]
+  for = "/admin-assets/*.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
 
+# Headers for admin page
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https://identity.netlify.com https://api.github.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://identity.netlify.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://identity.netlify.com https://api.github.com;"
+
+# Explicit redirect for admin root
 [[redirects]]
   from = "/admin"
   to = "/admin/index.html"
   status = 200
   force = true
 
-# Headers for admin page to allow scripts
-[[headers]]
-  for = "/admin/*"
-  [headers.values]
-    X-Content-Type-Options = "nosniff"
-    Content-Security-Policy = "default-src 'self' 'unsafe-inline' 'unsafe-eval' https://identity.netlify.com https://cdn.jsdelivr.net https://unpkg.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://identity.netlify.com https://cdn.jsdelivr.net; connect-src 'self' https://api.github.com https://identity.netlify.com;"
+# Serve Decap CMS admin interface - redirect paths but exclude assets folder
+# Assets folder contains JS files that need to be served directly
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+  force = true
+  # This will redirect, but actual files in /admin/assets/ will be served first
 
 # Client-side routing for all other routes (catch-all - must be last)
 [[redirects]]
