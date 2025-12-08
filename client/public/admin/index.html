@@ -11,6 +11,7 @@
   <!-- Using local copy to avoid Content-Type issues -->
   <script src="/admin-assets/decap-cms.js" type="text/javascript"></script>
   <script>
+    // Initialize Netlify Identity
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {
