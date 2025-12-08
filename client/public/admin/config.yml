@@ -1,0 +1,24 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update
+
+media_folder: client/public/images
+public_folder: /images
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: true }
+      - { label: "Publish Date", name: "date", widget: "datetime", required: true }
+      - { label: "Author", name: "author", widget: "string", required: true }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true, required: false }
+      - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
+      - { label: "SEO Title", name: "seoTitle", widget: "string", required: false }
+      - { label: "SEO Description", name: "seoDescription", widget: "text", required: false }
+      - { label: "Body", name: "body", widget: "markdown", required: true }
+

@@ -2,13 +2,7 @@
   command = "pnpm build"
   publish = "dist/public"
 
-# Handle Tina CMS API routes first (for self-hosted, or use Tina Cloud)
-[[redirects]]
-  from = "/api/tina/*"
-  to = "/.netlify/functions/tina/:splat"
-  status = 200
-
-# Serve Tina CMS admin interface - must come before catch-all
+# Serve Decap CMS admin interface - must come before catch-all
 [[redirects]]
   from = "/admin/*"
   to = "/admin/index.html"

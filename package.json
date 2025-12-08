@@ -5,9 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite --host",
-    "dev:tina": "tinacms dev -c \"vite --host\"",
-    "build": "echo '🔍 Debug: Checking environment variables...' && echo 'TINA_CLIENT_ID exists: '$([ -n \"$TINA_CLIENT_ID\" ] && echo 'YES' || echo 'NO') && echo 'TINA_TOKEN exists: '$([ -n \"$TINA_TOKEN\" ] && echo 'YES' || echo 'NO') && echo 'TINA_BRANCH: '$TINA_BRANCH && TINA_CLIENT_ID=\"$TINA_CLIENT_ID\" TINA_TOKEN=\"$TINA_TOKEN\" TINA_BRANCH=\"$TINA_BRANCH\" tinacms build 2>&1 || echo '⚠️  Tina CMS build skipped - credentials not configured. Site will deploy without admin interface.'; vite build && (test -d admin && cp -r admin dist/public/ || echo 'No admin folder to copy') && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
-    "build:admin": "tinacms build",
+    "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "start": "NODE_ENV=production node dist/index.js",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
@@ -42,8 +40,6 @@
     "@radix-ui/react-toggle": "^1.1.10",
     "@radix-ui/react-toggle-group": "^1.1.11",
     "@radix-ui/react-tooltip": "^1.2.8",
-    "@tinacms/cli": "^2.0.1",
-    "@tinacms/datalayer": "^2.0.0",
     "axios": "^1.12.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -69,7 +65,6 @@
     "streamdown": "^1.4.0",
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
-    "tinacms": "^3.0.1",
     "vaul": "^1.1.2",
     "wouter": "^3.3.5",
     "zod": "^4.1.12"

@@ -82,12 +82,8 @@ async function startServer() {
     }
   });
 
-  // Tina CMS API routes
-  // In development, Tina CMS will be handled by the Vite dev server
-  // In production, you may need to set up a separate Tina backend
-  app.use("/api/tina", express.json(), (_req, res) => {
-    res.status(501).json({ error: "Tina CMS backend - use /admin for editing" });
-  });
+  // Decap CMS (Netlify CMS) is available at /admin
+  // No backend API needed - it uses Netlify Identity and Git Gateway
 
   // Handle client-side routing - serve index.html for all routes
   app.get("*", (_req, res) => {
