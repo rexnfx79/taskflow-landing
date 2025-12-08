@@ -18,27 +18,49 @@ interface BlogPost {
 export default function Blog() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetch("/api/blog")
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Failed to fetch blog posts: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((data) => {
-        setPosts(data);
+        // Validate that data is an array
+        if (Array.isArray(data)) {
+          setPosts(data);
+        } else {
+          console.error("Invalid API response:", data);
+          setPosts([]);
+        }
         setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching blog posts:", error);
+        setError(error.message || "Failed to load blog posts");
         setLoading(false);
       });
   }, []);
 
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
+    if (!dateString) return "No date";
+    try {
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) {
+        return "Invalid date";
+      }
+      return date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+    } catch (error) {
+      console.error("Error formatting date:", error);
+      return "Invalid date";
+    }
   };
 
   return (
@@ -88,71 +110,82 @@ export default function Blog() {
             <div className="text-center py-12">
               <p className="text-muted-foreground">Loading posts...</p>
             </div>
+          ) : error ? (
+            <div className="text-center py-12">
+              <p className="text-destructive mb-4">{error}</p>
+              <Button onClick={() => window.location.reload()}>Retry</Button>
+            </div>
           ) : posts.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-muted-foreground">No blog posts yet. Check back soon!</p>
             </div>
           ) : (
             <div className="space-y-8">
-              {posts.map((post) => (
-                <Card
-                  key={post.slug}
-                  className="glass-card border-white/5 hover:border-primary/50 transition-all duration-300 group"
-                >
-                  <CardContent className="p-8">
-                    <div className="flex flex-col md:flex-row gap-6">
-                      {post.featuredImage && (
-                        <div className="md:w-48 h-48 rounded-lg overflow-hidden shrink-0">
-                          <img
-                            src={post.featuredImage}
-                            alt={post.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
-                        </div>
-                      )}
-                      <div className="flex-1">
-                        <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-3">
-                          <div className="flex items-center gap-2">
-                            <Calendar className="h-4 w-4" />
-                            <span>{formatDate(post.date)}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <User className="h-4 w-4" />
-                            <span>{post.author}</span>
-                          </div>
-                        </div>
-                        <h2 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                          <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                        </h2>
-                        <p className="text-muted-foreground mb-4">
-                          {post.excerpt || post.description}
-                        </p>
-                        {post.tags && post.tags.length > 0 && (
-                          <div className="flex flex-wrap gap-2 mb-4">
-                            {post.tags.map((tag) => (
-                              <span
-                                key={tag}
-                                className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-primary/10 text-primary text-xs font-medium"
-                              >
-                                <Tag className="h-3 w-3" />
-                                {tag}
-                              </span>
-                            ))}
+              {posts
+                .filter((post) => post && post.slug) // Filter out invalid posts
+                .map((post) => (
+                  <Card
+                    key={post.slug}
+                    className="glass-card border-white/5 hover:border-primary/50 transition-all duration-300 group"
+                  >
+                    <CardContent className="p-8">
+                      <div className="flex flex-col md:flex-row gap-6">
+                        {post.featuredImage && (
+                          <div className="md:w-48 h-48 rounded-lg overflow-hidden shrink-0">
+                            <img
+                              src={post.featuredImage}
+                              alt={post.title || "Blog post"}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
                           </div>
                         )}
-                        <Link href={`/blog/${post.slug}`}>
-                          <Button
-                            variant="ghost"
-                            className="group-hover:text-primary p-0 h-auto font-medium"
-                          >
-                            Read more <ArrowRight className="ml-2 h-4 w-4" />
-                          </Button>
-                        </Link>
+                        <div className="flex-1">
+                          <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-3">
+                            {post.date && (
+                              <div className="flex items-center gap-2">
+                                <Calendar className="h-4 w-4" />
+                                <span>{formatDate(post.date)}</span>
+                              </div>
+                            )}
+                            {post.author && (
+                              <div className="flex items-center gap-2">
+                                <User className="h-4 w-4" />
+                                <span>{post.author}</span>
+                              </div>
+                            )}
+                          </div>
+                          <h2 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                            <Link href={`/blog/${post.slug}`}>{post.title || "Untitled"}</Link>
+                          </h2>
+                          <p className="text-muted-foreground mb-4">
+                            {post.excerpt || post.description || "No description available"}
+                          </p>
+                          {post.tags && Array.isArray(post.tags) && post.tags.length > 0 && (
+                            <div className="flex flex-wrap gap-2 mb-4">
+                              {post.tags.map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-primary/10 text-primary text-xs font-medium"
+                                >
+                                  <Tag className="h-3 w-3" />
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                          <Link href={`/blog/${post.slug}`}>
+                            <Button
+                              variant="ghost"
+                              className="group-hover:text-primary p-0 h-auto font-medium"
+                            >
+                              Read more <ArrowRight className="ml-2 h-4 w-4" />
+                            </Button>
+                          </Link>
+                        </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    </CardContent>
+                  </Card>
+                ))}
             </div>
           )}
         </div>
