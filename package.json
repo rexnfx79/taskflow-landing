@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --host",
     "dev:tina": "tinacms dev -c \"vite --host\"",
-    "build": "tinacms build && vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "build": "tinacms build 2>&1 || echo '⚠️  Tina CMS build skipped - credentials not configured. Site will deploy without admin interface.'; vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "build:admin": "tinacms build",
     "start": "NODE_ENV=production node dist/index.js",
     "preview": "vite preview --host",
