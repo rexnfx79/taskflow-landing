@@ -13,10 +13,32 @@
 
   <body class="antialiased selection:bg-primary selection:text-primary-foreground">
     <div id="root"></div>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script type="module" src="/src/main.tsx"></script>
     <script
       defer
       src="%VITE_ANALYTICS_ENDPOINT%/umami"
       data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
+    <script>
+      // Initialize Netlify Identity to handle recovery tokens and authentication
+      // The widget automatically processes hash fragments like #recovery_token=...
+      document.addEventListener("DOMContentLoaded", function() {
+        if (window.netlifyIdentity) {
+          window.netlifyIdentity.on("init", user => {
+            // Recovery tokens are automatically handled by the widget
+            // No need to manually process them
+          });
+          
+          // Handle successful login
+          window.netlifyIdentity.on("login", () => {
+            window.netlifyIdentity.close();
+            // Redirect to admin after login if not already there
+            if (window.location.pathname !== "/admin") {
+              window.location.href = "/admin/";
+            }
+          });
+        }
+      });
+    </script>
   </body>
 </html>
