@@ -91,7 +91,7 @@ export default defineConfig({
     },
   },
   build: {
-    outputFolder: "admin",
+    outputFolder: "client/public/admin",
     publicFolder: "client/public",
   },
   schema,
