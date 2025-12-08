@@ -77,11 +77,14 @@ const schema = {
 export default defineConfig({
   // For local development, these can be empty
   // For production with Tina Cloud, set these environment variables
-  clientId: process.env.VITE_TINA_CLIENT_ID || "",
+  // Try both VITE_ prefixed (for Vite) and non-prefixed (for Tina CLI) versions
+  clientId: process.env.VITE_TINA_CLIENT_ID || process.env.TINA_CLIENT_ID || "",
   branch:
     process.env.VITE_TINA_BRANCH ||
+    process.env.TINA_BRANCH ||
     process.env.VERCEL_GIT_COMMIT_REF ||
     process.env.HEAD ||
+    process.env.GITHUB_BRANCH ||
     "main",
   token: process.env.TINA_TOKEN || "",
   media: {

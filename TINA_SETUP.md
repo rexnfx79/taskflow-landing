@@ -18,12 +18,15 @@ Tina Cloud is the easiest way to use Tina CMS with Netlify. It handles all the b
 3. **Set Netlify Environment Variables**
    - Go to your Netlify site dashboard
    - Navigate to Site settings → Environment variables
-   - Add these variables:
+   - Add these variables (IMPORTANT: Add BOTH versions):
      ```
      VITE_TINA_CLIENT_ID=your_client_id_here
+     TINA_CLIENT_ID=your_client_id_here
      TINA_TOKEN=your_token_here
      VITE_TINA_BRANCH=main
+     TINA_BRANCH=main
      ```
+   - Note: You need both `VITE_TINA_CLIENT_ID` (for Vite) and `TINA_CLIENT_ID` (for Tina CLI build step)
 
 4. **Redeploy**
    - Trigger a new deployment in Netlify
