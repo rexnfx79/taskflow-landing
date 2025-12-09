@@ -22,9 +22,17 @@ export default function Blog() {
 
   useEffect(() => {
     fetch("/api/blog")
-      .then((res) => {
+      .then(async (res) => {
         if (!res.ok) {
+          const text = await res.text();
+          console.error("API error response:", text);
           throw new Error(`Failed to fetch blog posts: ${res.status}`);
+        }
+        const contentType = res.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+          const text = await res.text();
+          console.error("Non-JSON response received:", contentType, text.substring(0, 200));
+          throw new Error("Invalid response format: expected JSON");
         }
         return res.json();
       })
