@@ -15,10 +15,19 @@
     <div id="root"></div>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script type="module" src="/src/main.tsx"></script>
-    <script
-      defer
-      src="%VITE_ANALYTICS_ENDPOINT%/umami"
-      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
+    <!-- Umami Analytics - only load if environment variables are set -->
+    <script type="module">
+      // Only load Umami if environment variables are configured
+      const analyticsEndpoint = import.meta.env.VITE_ANALYTICS_ENDPOINT;
+      const websiteId = import.meta.env.VITE_ANALYTICS_WEBSITE_ID;
+      if (analyticsEndpoint && websiteId) {
+        const script = document.createElement('script');
+        script.defer = true;
+        script.src = `${analyticsEndpoint}/umami`;
+        script.setAttribute('data-website-id', websiteId);
+        document.head.appendChild(script);
+      }
+    </script>
     <script>
       // Initialize Netlify Identity to handle recovery tokens and authentication
       // The widget automatically processes hash fragments like #recovery_token=...

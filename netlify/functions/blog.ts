@@ -5,7 +5,10 @@ import matter from "gray-matter";
 
 // Get the root directory - Netlify Functions run from repo root
 // In Netlify, process.cwd() is the repository root
-const getContentPath = () => path.join(process.cwd(), "content", "blog");
+const getContentPath = () => {
+  const repoRoot = process.cwd();
+  return path.join(repoRoot, "content", "blog");
+};
 
 export const handler: Handler = async (event: HandlerEvent, context: HandlerContext) => {
   const headers = {
