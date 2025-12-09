@@ -8,39 +8,66 @@ import remarkHtml from "remark-html";
 
 // Get the content path - try multiple locations
 const getContentPath = async () => {
-  // Get the function directory using import.meta.url
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
-  
-  // Try multiple possible locations in order of likelihood:
-  const pathsToTry = [
-    // 1. Relative to function directory (if bundled with function)
-    path.join(__dirname, "content", "blog"),
-    // 2. Parent directory (if function is in a subdirectory)
-    path.join(__dirname, "..", "content", "blog"),
-    // 3. From process.cwd() - netlify/functions/content/blog
-    path.join(process.cwd(), "netlify", "functions", "content", "blog"),
-    // 4. From process.cwd() - content/blog (repo root)
-    path.join(process.cwd(), "content", "blog"),
-  ];
-  
-  // Try each path and return the first one that exists
-  for (const contentPath of pathsToTry) {
+  try {
+    // Try to get function directory, but handle case where import.meta.url is undefined
+    let __dirname: string | undefined;
     try {
-      await fs.access(contentPath);
-      console.log("Found content at:", contentPath);
-      return contentPath;
+      if (import.meta.url) {
+        const __filename = fileURLToPath(import.meta.url);
+        __dirname = path.dirname(__filename);
+      }
     } catch (err) {
-      // Try next path
-      continue;
+      console.log("Could not get __dirname from import.meta.url, using fallback");
     }
+    
+    // Try multiple possible locations in order of likelihood:
+    // With included_files, Netlify copies content/** to the function bundle
+    // The content folder should be accessible from process.cwd() in the Lambda environment
+    const pathsToTry: string[] = [
+      // 1. From process.cwd() - content/blog (most likely with included_files)
+      path.join(process.cwd(), "content", "blog"),
+    ];
+    
+    // Add paths relative to function directory if we have it
+    if (__dirname) {
+      pathsToTry.push(
+        // 2. Relative to function directory
+        path.join(__dirname, "content", "blog"),
+        // 3. Parent directory (if function is in a subdirectory)
+        path.join(__dirname, "..", "content", "blog")
+      );
+    }
+    
+    // Add fallback paths
+    pathsToTry.push(
+      // 4. From process.cwd() - netlify/functions/content/blog (fallback)
+      path.join(process.cwd(), "netlify", "functions", "content", "blog")
+    );
+    
+    // Try each path and return the first one that exists
+    for (const contentPath of pathsToTry) {
+      try {
+        await fs.access(contentPath);
+        console.log("Found content at:", contentPath);
+        return contentPath;
+      } catch (err) {
+        // Try next path
+        continue;
+      }
+    }
+    
+    // If none found, log error and return first path for error message
+    console.error("Could not find content directory. Tried paths:", pathsToTry);
+    if (__dirname) {
+      console.error("Function directory (__dirname):", __dirname);
+    }
+    console.error("Process cwd:", process.cwd());
+    return pathsToTry[0]; // Return first path for error message
+  } catch (error: any) {
+    console.error("Error in getContentPath:", error?.message);
+    // Return a default path to prevent crashing
+    return path.join(process.cwd(), "content", "blog");
   }
-  
-  // If none found, log error and return first path for error message
-  console.error("Could not find content directory. Tried paths:", pathsToTry);
-  console.error("Function directory (__dirname):", __dirname);
-  console.error("Process cwd:", process.cwd());
-  return pathsToTry[0]; // Return first path for error message
 };
 
 export const handler: Handler = async (event: HandlerEvent, context: HandlerContext) => {
