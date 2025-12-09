@@ -4,26 +4,41 @@ import path from "path";
 import { fileURLToPath } from "url";
 import matter from "gray-matter";
 
-// Get the content path - content is copied to function bundle during build
+// Get the content path - try multiple locations
 const getContentPath = async () => {
   // Get the function directory using import.meta.url
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
   
-  // Content is copied to netlify/functions/content/blog during build
-  // In Netlify Functions, the function code is in the function's directory
-  // Try relative to function directory first
-  let contentPath = path.join(__dirname, "content", "blog");
+  // Try multiple possible locations in order of likelihood:
+  const pathsToTry = [
+    // 1. Relative to function directory (if bundled with function)
+    path.join(__dirname, "content", "blog"),
+    // 2. Parent directory (if function is in a subdirectory)
+    path.join(__dirname, "..", "content", "blog"),
+    // 3. From process.cwd() - netlify/functions/content/blog
+    path.join(process.cwd(), "netlify", "functions", "content", "blog"),
+    // 4. From process.cwd() - content/blog (repo root)
+    path.join(process.cwd(), "content", "blog"),
+  ];
   
-  // Check if path exists, try alternative if not
-  try {
-    await fs.access(contentPath);
-  } catch {
-    // If that doesn't work, try going up one level (in case function is in a subdirectory)
-    contentPath = path.join(__dirname, "..", "content", "blog");
+  // Try each path and return the first one that exists
+  for (const contentPath of pathsToTry) {
+    try {
+      await fs.access(contentPath);
+      console.log("Found content at:", contentPath);
+      return contentPath;
+    } catch (err) {
+      // Try next path
+      continue;
+    }
   }
   
-  return contentPath;
+  // If none found, log error and return first path for error message
+  console.error("Could not find content directory. Tried paths:", pathsToTry);
+  console.error("Function directory (__dirname):", __dirname);
+  console.error("Process cwd:", process.cwd());
+  return pathsToTry[0]; // Return first path for error message
 };
 
 export const handler: Handler = async (event: HandlerEvent, context: HandlerContext) => {

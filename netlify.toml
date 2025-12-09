@@ -3,6 +3,10 @@
   publish = "dist/public"
   functions = "netlify/functions"
 
+# Include content folder with functions
+[functions]
+  included_files = ["netlify/functions/content/**"]
+
 # Headers for JavaScript files to ensure correct Content-Type
 [[headers]]
   for = "/admin-assets/*.js"
