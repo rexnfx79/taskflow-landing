@@ -1,57 +1,7 @@
 [build]
   command = "pnpm build"
   publish = "dist/public"
-  functions = "netlify/functions"
 
-# Include content folder with functions
-# Paths are relative to the repository root
-[functions]
-  included_files = ["content/**"]
-
-# Headers for JavaScript files to ensure correct Content-Type
-[[headers]]
-  for = "/admin-assets/*.js"
-  [headers.values]
-    Content-Type = "application/javascript; charset=utf-8"
-
-# Headers for YAML config file - must be specific to avoid conflicts
-[[headers]]
-  for = "/admin/config.yml"
-  [headers.values]
-    Content-Type = "text/yaml; charset=utf-8"
-
-# Blog API routes - must come before catch-all
-[[redirects]]
-  from = "/api/blog"
-  to = "/.netlify/functions/blog"
-  status = 200
-
-[[redirects]]
-  from = "/api/blog/:slug"
-  to = "/.netlify/functions/blog-slug?slug=:slug"
-  status = 200
-
-# Headers for admin page
-[[headers]]
-  for = "/admin/*"
-  [headers.values]
-    Content-Security-Policy = "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https://identity.netlify.com https://api.github.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://identity.netlify.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://identity.netlify.com https://api.github.com;"
-
-# Explicit redirect for admin root
-[[redirects]]
-  from = "/admin"
-  to = "/admin/index.html"
-  status = 200
-
-# Serve Decap CMS admin interface - redirect paths but NOT files
-# Static files (like config.yml) will be served directly before this redirect
-[[redirects]]
-  from = "/admin/*"
-  to = "/admin/index.html"
-  status = 200
-  # This will redirect, but actual files in /admin/assets/ will be served first
-
-# Client-side routing for all other routes (catch-all - must be last)
 [[redirects]]
   from = "/*"
   to = "/index.html"
