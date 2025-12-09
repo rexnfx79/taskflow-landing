@@ -115,3 +115,4 @@ The CMS is configured in `client/public/admin/config.yml`. You can customize:
 
 Your CMS is now ready to use. All content will be stored in your GitHub repository as markdown files, just like before, but now you have a working admin interface!
 
+
