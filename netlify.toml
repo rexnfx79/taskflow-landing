@@ -6,7 +6,7 @@
 # Include content folder with functions
 # Paths are relative to the repository root
 [functions]
-  included_files = ["content/**", "netlify/functions/content/**"]
+  included_files = ["content/**"]
 
 # Headers for JavaScript files to ensure correct Content-Type
 [[headers]]
