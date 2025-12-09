@@ -1,13 +1,29 @@
 import type { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
 import fs from "fs/promises";
 import path from "path";
+import { fileURLToPath } from "url";
 import matter from "gray-matter";
 
-// Get the root directory - Netlify Functions run from repo root
-// In Netlify, process.cwd() is the repository root
-const getContentPath = () => {
-  const repoRoot = process.cwd();
-  return path.join(repoRoot, "content", "blog");
+// Get the content path - content is copied to function bundle during build
+const getContentPath = async () => {
+  // Get the function directory using import.meta.url
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  
+  // Content is copied to netlify/functions/content/blog during build
+  // In Netlify Functions, the function code is in the function's directory
+  // Try relative to function directory first
+  let contentPath = path.join(__dirname, "content", "blog");
+  
+  // Check if path exists, try alternative if not
+  try {
+    await fs.access(contentPath);
+  } catch {
+    // If that doesn't work, try going up one level (in case function is in a subdirectory)
+    contentPath = path.join(__dirname, "..", "content", "blog");
+  }
+  
+  return contentPath;
 };
 
 export const handler: Handler = async (event: HandlerEvent, context: HandlerContext) => {
@@ -35,7 +51,7 @@ export const handler: Handler = async (event: HandlerEvent, context: HandlerCont
   }
 
   try {
-    const contentPath = getContentPath();
+    const contentPath = await getContentPath();
     // Log for debugging
     console.log("Content path:", contentPath);
     console.log("Process cwd:", process.cwd());

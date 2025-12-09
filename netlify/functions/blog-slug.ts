@@ -1,13 +1,31 @@
 import type { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
 import fs from "fs/promises";
 import path from "path";
+import { fileURLToPath } from "url";
 import matter from "gray-matter";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 
-// Get the root directory - Netlify Functions run from repo root
-// In Netlify, process.cwd() is the repository root
-const getContentPath = () => path.join(process.cwd(), "content", "blog");
+// Get the content path - content is copied to function bundle during build
+const getContentPath = async () => {
+  // Get the function directory using import.meta.url
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  
+  // Content is copied to netlify/functions/content/blog during build
+  // Try relative to function directory first
+  let contentPath = path.join(__dirname, "content", "blog");
+  
+  // Check if path exists, try alternative if not
+  try {
+    await fs.access(contentPath);
+  } catch {
+    // If that doesn't work, try going up one level
+    contentPath = path.join(__dirname, "..", "content", "blog");
+  }
+  
+  return contentPath;
+};
 
 export const handler: Handler = async (event: HandlerEvent, context: HandlerContext) => {
   const headers = {
@@ -45,7 +63,7 @@ export const handler: Handler = async (event: HandlerEvent, context: HandlerCont
       };
     }
     
-    const contentPath = getContentPath();
+    const contentPath = await getContentPath();
     console.log("Content path:", contentPath);
     console.log("Looking for slug:", slug);
     
