@@ -13,6 +13,7 @@ interface BlogPost {
   tags?: string[];
   excerpt?: string;
   featuredImage?: string;
+  image?: string;
 }
 
 export default function Blog() {
@@ -138,10 +139,10 @@ export default function Blog() {
                   >
                     <CardContent className="p-8">
                       <div className="flex flex-col md:flex-row gap-6">
-                        {post.featuredImage && (
+                        {(post.featuredImage || post.image) && (
                           <div className="md:w-48 h-48 rounded-lg overflow-hidden shrink-0">
                             <img
-                              src={post.featuredImage}
+                              src={post.featuredImage || post.image}
                               alt={post.title || "Blog post"}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
