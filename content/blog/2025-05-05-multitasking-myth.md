@@ -20,6 +20,8 @@ Except, you aren't. You're likely doing a terrible job at all three things. You 
 
 This is the **myth of multitasking**. We wear it as a badge of honor, a requirement for modern life. Job descriptions even ask for "excellent multitasking skills." But neuroscience is clear: **the human brain cannot multitask**. It can only **task-switch**. And the cost of that switching is devastating to your productivity, your IQ, and your well-being.
 
+---
+
 ## The Neuroscience of Task-Switching: What Really Happens
 
 When you think you're doing two things at once, your brain is actually rapidly toggling between them. It's like a light switch flicking on and off a hundred times a minute. Understanding what's happening in your brain helps explain why multitasking is so costly.

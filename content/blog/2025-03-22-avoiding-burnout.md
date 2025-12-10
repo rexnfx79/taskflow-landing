@@ -26,6 +26,8 @@ Burnout is not just being tired. According to the World Health Organization, bur
 
 For a solopreneur, burnout is an existential threat. It doesn't just hurt your health; it kills your business. When you're the only employee, there's no one to cover for you when you're running on empty. Understanding burnout, recognizing its signs, and implementing prevention strategies is not optional—it's essential for survival.
 
+---
+
 ## The Science of Burnout: What Happens to Your Body and Mind
 
 ### The Stress Response System
