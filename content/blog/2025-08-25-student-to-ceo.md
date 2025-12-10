@@ -10,6 +10,10 @@ seoTitle: "Student to CEO: Professional Time Management Guide | TaskFlow"
 seoDescription: "Learn how to transition from student to CEO mindset. Master professional time management, strategic planning, and self-management skills."
 ---
 
+
+
+
+
 ![From Student to CEO](/images/student-ceo.png)
 
 ## Introduction: The Transition Challenge
@@ -111,11 +115,7 @@ You need to write your own syllabus. This is your strategic plan.
 - Realistic but ambitious
 
 **How to Set Them:**
-1. Review your annual goals
-2. Break them into quarterly milestones
-3. Identify 3-5 key objectives
-4. Make them specific and measurable
-5. Set deadlines
+1. Review your annual goals 2. Break them into quarterly milestones 3. Identify 3-5 key objectives 4. Make them specific and measurable 5. Set deadlines
 
 **Example:**
 - Annual Goal: Launch a consulting business
@@ -316,11 +316,7 @@ TaskFlow is the operating system for this transition. It provides the structure 
 - Supports planning
 
 **The Process:**
-1. Review what you accomplished
-2. Assess what didn't get done
-3. Identify obstacles
-4. Plan for next week
-5. Align with quarterly goals
+1. Review what you accomplished 2. Assess what didn't get done 3. Identify obstacles 4. Plan for next week 5. Align with quarterly goals
 
 **Benefits:**
 - Builds strategic thinking habit

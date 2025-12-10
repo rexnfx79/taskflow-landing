@@ -10,6 +10,10 @@ seoTitle: "Personal Annual Review: Complete Guide to Year-End Reflection | TaskF
 seoDescription: "Learn how to conduct a comprehensive personal annual review. Extract wisdom from experiences, celebrate wins, and plan strategically for the year ahead."
 ---
 
+
+
+
+
 ![Reviewing Your Year](/images/annual-review.png)
 
 ## Introduction: The Power of Reflection

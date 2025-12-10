@@ -10,6 +10,10 @@ seoTitle: "Why Multitasking Kills Productivity: Science of Single-Tasking | Task
 seoDescription: "Learn why multitasking destroys productivity. Discover the neuroscience behind task-switching and how single-tasking can improve your work performance and focus."
 ---
 
+
+
+
+
 ![Why Multitasking is Killing Your Productivity](/images/multitasking.png)
 
 ## Introduction: The Multitasking Myth
@@ -28,11 +32,7 @@ When you think you're doing two things at once, your brain is actually rapidly t
 
 ### The Switch Cost: The Hidden Tax on Your Brain
 
-Every time you switch tasks, there's a metabolic cost. Your brain has to:
-1. **Unload the context** of Task A from working memory
-2. **Load the context** of Task B into working memory
-3. **Reorient** your attention and cognitive resources
-4. **Reactivate** the relevant neural pathways
+Every time you switch tasks, there's a metabolic cost. Your brain has to: 1. **Unload the context** of Task A from working memory 2. **Load the context** of Task B into working memory 3. **Reorient** your attention and cognitive resources 4. **Reactivate** the relevant neural pathways
 
 This process takes time—fractions of a second, but they add up. Research from Carnegie Mellon University shows that even brief interruptions can cause a 40% drop in productivity. When you're switching between tasks frequently, you're spending significant mental energy just on the switching itself.
 

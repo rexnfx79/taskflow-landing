@@ -10,6 +10,10 @@ seoTitle: "Building a Second Brain: Complete Guide to Knowledge Management | Tas
 seoDescription: "Learn how to build a second brain system to capture ideas, organize knowledge, and unleash creativity. Master the CODE framework for effective knowledge management."
 ---
 
+
+
+
+
 ![Building a Second Brain](/images/second-brain.png)
 
 ## Introduction: The Information Overload Problem
@@ -236,11 +240,7 @@ This is the payoff. The goal of knowledge is not to have it, but to use it. Your
 
 #### The Express Principle
 
-When you start a new project, you shouldn't start from a blank page. You should:
-1. Search your Second Brain for relevant notes
-2. Pull together existing ideas and insights
-3. Stand on the shoulders of your past self
-4. Create something new from existing knowledge
+When you start a new project, you shouldn't start from a blank page. You should: 1. Search your Second Brain for relevant notes 2. Pull together existing ideas and insights 3. Stand on the shoulders of your past self 4. Create something new from existing knowledge
 
 #### Expressing Through Projects
 

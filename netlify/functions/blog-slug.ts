@@ -131,7 +131,9 @@ export const handler: Handler = async (event: HandlerEvent, context: HandlerCont
     }
     
     const { data, content } = matter(fileContents);
-    const processedContent = await remark().use(remarkHtml).process(content);
+    const processedContent = await remark()
+      .use(remarkHtml, { sanitize: false })
+      .process(content);
     const htmlContent = processedContent.toString();
 
     return {

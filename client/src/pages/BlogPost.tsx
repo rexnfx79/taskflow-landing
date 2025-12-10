@@ -159,14 +159,25 @@ export default function BlogPost() {
               <CardContent className="p-8 md:p-12">
                 <div
                   className="prose prose-invert prose-lg max-w-none
-                    prose-headings:text-foreground
-                    prose-p:text-muted-foreground
-                    prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-                    prose-strong:text-foreground
-                    prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
-                    prose-pre:bg-card prose-pre:border prose-pre:border-white/10
-                    prose-blockquote:border-primary/50 prose-blockquote:text-muted-foreground
-                    prose-img:rounded-lg prose-img:border prose-img:border-white/10"
+                    prose-headings:text-foreground prose-headings:font-bold prose-headings:scroll-mt-24
+                    prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-8 prose-h1:font-extrabold
+                    prose-h2:text-3xl prose-h2:mb-6 prose-h2:mt-16 prose-h2:font-bold prose-h2:leading-tight
+                    prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-10 prose-h3:font-semibold
+                    prose-h4:text-xl prose-h4:mb-3 prose-h4:mt-8 prose-h4:font-semibold
+                    prose-p:text-muted-foreground prose-p:mb-6 prose-p:leading-7 prose-p:text-base
+                    prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-a:font-medium
+                    prose-strong:text-foreground prose-strong:font-semibold
+                    prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono
+                    prose-pre:bg-card prose-pre:border prose-pre:border-white/10 prose-pre:rounded-lg prose-pre:p-4 prose-pre:mb-6 prose-pre:overflow-x-auto
+                    prose-blockquote:border-l-4 prose-blockquote:border-primary/50 prose-blockquote:text-muted-foreground prose-blockquote:pl-6 prose-blockquote:my-8 prose-blockquote:italic prose-blockquote:text-base
+                    prose-ul:my-6 prose-ul:space-y-3 prose-ul:list-disc prose-ul:pl-6
+                    prose-ol:my-6 prose-ol:space-y-3 prose-ol:list-decimal prose-ol:pl-6
+                    prose-li:my-2 prose-li:leading-7 prose-li:pl-2
+                    prose-img:rounded-lg prose-img:border prose-img:border-white/10 prose-img:my-10 prose-img:shadow-lg
+                    prose-hr:border-white/10 prose-hr:my-16 prose-hr:border-t-2
+                    prose-table:my-8 prose-table:w-full
+                    prose-th:border prose-th:border-white/10 prose-th:p-4 prose-th:bg-white/5 prose-th:font-semibold
+                    prose-td:border prose-td:border-white/10 prose-td:p-4"
                   dangerouslySetInnerHTML={{ __html: post.content }}
                 />
               </CardContent>

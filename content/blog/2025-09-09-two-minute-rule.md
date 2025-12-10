@@ -10,6 +10,10 @@ seoTitle: "The 2-Minute Rule: Overcome Procrastination Guide | TaskFlow"
 seoDescription: "Master the 2-minute rule to overcome procrastination and build momentum. Learn how small actions create big results through consistent execution."
 ---
 
+
+
+
+
 ![The 2-Minute Rule](/images/two-minute-rule.png)
 
 ## Introduction: Understanding Procrastination

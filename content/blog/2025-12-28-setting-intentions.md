@@ -10,6 +10,10 @@ seoTitle: "Setting Intentions for 2026: Beyond Resolutions Guide | TaskFlow"
 seoDescription: "Learn how to set intentions backed by systems instead of fragile resolutions. Make 2026 your best year with sustainable goal-setting strategies."
 ---
 
+
+
+
+
 ![Setting Intentions for 2026](/images/future-goals.png)
 
 ## Introduction: The Resolution Problem
@@ -231,11 +235,7 @@ Break your big goals into manageable projects. Use TaskFlow's project features t
 Set a recurring task for every Sunday: "Weekly Review." This is where you look at your systems and adjust them.
 
 **The Process:**
-1. Review your week
-2. Assess what worked
-3. Identify what didn't
-4. Adjust your systems
-5. Plan for next week
+1. Review your week 2. Assess what worked 3. Identify what didn't 4. Adjust your systems 5. Plan for next week
 
 **Questions to Ask:**
 - Did I complete my recurring tasks?
@@ -376,11 +376,7 @@ Use tags to organize tasks by intention:
 - Intentions + Systems: Flexible, sustainable, identity-focused
 
 **The Path:**
-1. Set clear intentions
-2. Design supporting systems
-3. Implement in TaskFlow
-4. Review and adjust weekly
-5. Trust the process
+1. Set clear intentions 2. Design supporting systems 3. Implement in TaskFlow 4. Review and adjust weekly 5. Trust the process
 
 **The Result:**
 - Lasting change
