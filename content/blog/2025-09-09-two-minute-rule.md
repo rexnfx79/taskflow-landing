@@ -1,11 +1,11 @@
 ---
 title: "The 2-Minute Rule: Small Habits, Big Results"
 date: 2025-09-09
-image: /images/blog/two-minute-rule.png
+image: /images/two-minute-rule.png
 description: "Procrastination is often about inertia. Learn how the 2-Minute Rule can help you overcome resistance and build momentum."
 ---
 
-![The 2-Minute Rule](/images/blog/two-minute-rule.png)
+![The 2-Minute Rule](/images/two-minute-rule.png)
 
 ### Introduction
 Procrastination is rarely about laziness. It is about emotional regulation. We put off tasks because they make us feel anxious, overwhelmed, or bored. We look at a messy kitchen and feel the weight of the cleanup, so we walk away. We look at an overflowing inbox and feel the stress of the replies, so we open Instagram.

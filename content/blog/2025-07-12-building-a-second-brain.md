@@ -1,11 +1,11 @@
 ---
 title: "Building a Second Brain: Organizing Your Digital Life for Maximum Creativity"
 date: 2025-07-12
-image: /images/blog/second-brain.png
+image: /images/second-brain.png
 description: "Stop trying to remember everything. Learn how to build a 'Second Brain' to capture ideas, organize knowledge, and unleash your creativity."
 ---
 
-![Building a Second Brain](/images/blog/second-brain.png)
+![Building a Second Brain](/images/second-brain.png)
 
 ### Introduction
 We are drowning in information but starving for wisdom. Every day, we are bombarded with articles, podcasts, emails, and meeting notes. We consume vast amounts of content, but how much of it do we actually retain? How much of it do we use to create something new? For most of us, the answer is "very little." We read a brilliant article, feel inspired, and then forget it a week later.

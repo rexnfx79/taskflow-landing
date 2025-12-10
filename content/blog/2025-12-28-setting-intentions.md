@@ -1,11 +1,11 @@
 ---
 title: "Setting Intentions for 2026: Beyond Resolutions"
 date: 2025-12-28
-image: /images/blog/future-goals.png
+image: /images/future-goals.png
 description: "New Year's resolutions often fail. Learn how to set Intentions backed by Systems to make 2026 your best year yet."
 ---
 
-![Setting Intentions for 2026](/images/blog/future-goals.png)
+![Setting Intentions for 2026](/images/future-goals.png)
 
 ### Introduction
 "New Year, New Me." It's the marketing slogan of January. Gyms are packed. Nicotine patches sell out. We are filled with a surge of motivation to change our lives.

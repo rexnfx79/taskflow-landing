@@ -1,11 +1,11 @@
 ---
 title: "From Student to CEO: Managing Time Like a Pro"
 date: 2025-08-25
-image: /images/blog/student-ceo.png
+image: /images/student-ceo.png
 description: "The transition from student life to the professional world requires a mindset shift. Learn how to stop thinking like a student and start operating like the CEO of your life."
 ---
 
-![From Student to CEO](/images/blog/student-ceo.png)
+![From Student to CEO](/images/student-ceo.png)
 
 ### Introduction
 The transition from university to the professional world is one of the most jarring shifts in a young person's life. In school, the path is illuminated. The syllabus tells you what to read. The professor tells you when the exam is. The semester schedule tells you when to rest. Success is defined by compliance: do what you are told, well and on time.

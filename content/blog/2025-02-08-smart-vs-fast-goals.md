@@ -1,11 +1,11 @@
 ---
 title: "SMART Goals vs. FAST Goals: Which One Fits You?"
 date: 2025-02-08
-image: /images/blog/smart-goals.png
+image: /images/smart-goals.png
 description: "Explore the differences between the traditional SMART framework and the agile FAST framework to find the goal-setting strategy that fits your needs."
 ---
 
-![SMART vs FAST Goals](/images/blog/smart-goals.png)
+![SMART vs FAST Goals](/images/smart-goals.png)
 
 ### Introduction
 Goal setting is the bridge between the world of dreams and the world of reality. Without clear goals, we are rudderless ships, drifting wherever the currents of life take us. For decades, the corporate and personal development worlds have coalesced around a single acronym: SMART.

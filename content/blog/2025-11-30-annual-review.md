@@ -1,11 +1,11 @@
 ---
 title: "Reviewing Your Year: How to Conduct a Personal Annual Review"
 date: 2025-11-30
-image: /images/blog/annual-review.png
+image: /images/annual-review.png
 description: "Don't just live the same year over and over. Learn how to conduct a Personal Annual Review to extract wisdom from your experience."
 ---
 
-![Reviewing Your Year](/images/blog/annual-review.png)
+![Reviewing Your Year](/images/annual-review.png)
 
 ### Introduction
 We spend 99% of our lives looking forward—worrying about tomorrow's deadline, planning next week's trip, dreaming of next year's promotion. We rarely stop to look back. This is a missed opportunity. As the philosopher George Santayana said, "Those who cannot remember the past are condemned to repeat it."

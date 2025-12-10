@@ -1,11 +1,11 @@
 ---
 title: "The Solopreneur's Guide to Avoiding Burnout: Sustainable Success"
 date: 2025-03-22
-image: /images/blog/burnout.png
+image: /images/burnout.png
 description: "Burnout is an existential threat for solopreneurs. Learn how to recognize the signs and implement strategies for sustainable success."
 ---
 
-![Avoiding Burnout](/images/blog/burnout.png)
+![Avoiding Burnout](/images/burnout.png)
 
 ### Introduction
 The allure of solopreneurship is undeniable. Freedom. Autonomy. Unlimited earning potential. No boss breathing down your neck. It is the modern dream. But there is a shadow side to this freedom that is rarely discussed on Instagram or LinkedIn: Burnout.

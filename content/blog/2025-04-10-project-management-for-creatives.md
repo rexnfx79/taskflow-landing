@@ -1,11 +1,11 @@
 ---
 title: "Project Management for Creatives: Taming the Chaos"
 date: 2025-04-10
-image: /images/blog/project-management.png
+image: /images/project-management.png
 description: "Creativity thrives on chaos, but projects die in it. Learn how to implement a 'Flexible Structure' that organizes your work without killing the spark."
 ---
 
-![Project Management for Creatives](/images/blog/project-management.png)
+![Project Management for Creatives](/images/project-management.png)
 
 ### Introduction
 "Project Management." The very phrase can send a shiver down the spine of a creative professional. It conjures images of rigid spreadsheets, soulless Gantt charts, and endless meetings that drain the life out of the creative process. Creatives—designers, writers, developers, videographers—thrive on flow, intuition, and exploration. Structure feels like a cage.

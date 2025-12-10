@@ -1,11 +1,11 @@
 ---
 title: "Consulting 101: Tracking Billable Hours Without the Headache"
 date: 2025-10-14
-image: /images/blog/consulting-hours.png
+image: /images/consulting-hours.png
 description: "Time is money for consultants. Learn how to track billable hours accurately and painlessly to maximize your revenue."
 ---
 
-![Consulting 101](/images/blog/consulting-hours.png)
+![Consulting 101](/images/consulting-hours.png)
 
 ### Introduction
 For consultants, freelancers, and agencies, time is the inventory. You are selling your expertise, packaged in hours. If you lose track of that inventory—if you forget to bill for a phone call, or underestimate how long a project took—you are literally throwing money away.

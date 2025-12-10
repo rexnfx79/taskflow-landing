@@ -1,11 +1,11 @@
 ---
 title: "Why Multitasking is Killing Your Productivity: The Science of Attention"
 date: 2025-05-05
-image: /images/blog/multitasking.png
+image: /images/multitasking.png
 description: "Multitasking is a myth. Learn the neuroscience behind task-switching and why single-tasking is the only way to achieve true productivity."
 ---
 
-![Why Multitasking is Killing Your Productivity](/images/blog/multitasking.png)
+![Why Multitasking is Killing Your Productivity](/images/multitasking.png)
 
 ### Introduction
 Picture this: You are on a Zoom call with a client. While they are talking, you are secretly checking your email in another window. A Slack notification pops up—a question from a colleague—and you quickly type a reply. You feel like a productivity ninja, juggling multiple balls with ease. You are getting so much done!
